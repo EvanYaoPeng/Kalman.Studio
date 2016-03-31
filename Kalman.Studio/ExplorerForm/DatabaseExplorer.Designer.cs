@@ -49,6 +49,7 @@
             this.menuItemViewDB = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBatchBuildCode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBuildDBDoc = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemcloseDB = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.cmsTable.SuspendLayout();
             this.cmsSp.SuspendLayout();
@@ -201,7 +202,8 @@
             this.menuItemViewDB,
             this.menuItemBatchBuildCode,
             this.menuItemBuildDBDoc,
-            this.menuItemRefreshDB});
+            this.menuItemRefreshDB,
+            this.menuItemcloseDB});
             this.cmsDatabase.Name = "cmsDatabase";
             this.cmsDatabase.Size = new System.Drawing.Size(161, 136);
             // 
@@ -225,6 +227,13 @@
             this.menuItemBuildDBDoc.Size = new System.Drawing.Size(160, 22);
             this.menuItemBuildDBDoc.Text = "生成数据库文档";
             this.menuItemBuildDBDoc.Click += new System.EventHandler(this.menuItemBuildDBDoc_Click);
+            // 
+            // menuItemcloseDB
+            // 
+            this.menuItemcloseDB.Name = "menuItemcloseDB";
+            this.menuItemcloseDB.Size = new System.Drawing.Size(160, 22);
+            this.menuItemcloseDB.Text = "关闭数据库";
+            this.menuItemcloseDB.Click += new System.EventHandler(this.menuItemcloseDB_Click);
             // 
             // DatabaseExplorer
             // 
@@ -269,6 +278,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemBatchBuildCode;
         private System.Windows.Forms.ToolStripMenuItem menuItemBuildDBDoc;
         private System.Windows.Forms.ToolStripMenuItem menuItemBuildTestDataForTable;
+        private System.Windows.Forms.ToolStripMenuItem menuItemcloseDB;
 
 
     }

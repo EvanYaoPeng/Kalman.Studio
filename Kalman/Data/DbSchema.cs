@@ -93,11 +93,16 @@ namespace Kalman.Data
         {
             List<SODatabase> list = new List<SODatabase>();
             DataTable dt = GetSchema(MetaDataCollectionName_Databases);
-
+            string str=string.Empty;
             foreach (DataRow dr in dt.Rows)
             {
                 SODatabase db = new SODatabase();
-                db.Name = dr["database_name"].ToString();
+                str = dr["database_name"].ToString();
+                if (str.Contains("."))
+                {
+                    str = string.Format("[{0}]", str);
+                }
+                db.Name = str;
                 db.Comment = db.Name;
                 db.Parent = this;
 

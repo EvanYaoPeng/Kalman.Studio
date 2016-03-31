@@ -254,6 +254,11 @@ namespace Kalman.Studio
             LoadDbSchema(tn);
         }
 
+
+        private void menuItemcloseDB_Click(object sender, EventArgs e)
+        {
+            //LoadDbSchema(null);
+        }
         #endregion
 
         #region 表右键菜单事件处理
@@ -413,6 +418,7 @@ namespace Kalman.Studio
         }
 
         #endregion
+
 
         
 

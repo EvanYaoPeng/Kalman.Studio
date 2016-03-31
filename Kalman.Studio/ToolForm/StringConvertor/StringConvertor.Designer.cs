@@ -202,7 +202,7 @@
             this.rtb1.Name = "rtb1";
             this.rtb1.Size = new System.Drawing.Size(496, 233);
             this.rtb1.TabIndex = 0;
-            this.rtb1.Text = "";
+            this.rtb1.Text = "sh600642,sh600747,sh600527,sz002716";
             this.rtb1.TextChanged += new System.EventHandler(this.rtb1_TextChanged);
             // 
             // groupBox4
