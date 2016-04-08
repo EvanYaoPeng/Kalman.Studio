@@ -93,7 +93,10 @@ namespace Kalman.Data.DbSchemaProvider
         //获取表的主键列
         List<string> GetPrimaryKeys(SOTable table)
         {
-            string cmdText = string.Format(@"use {2};exec sp_pkeys '{0}','{1}','{2}';", table.Name, table.Owner, table.Database.Name);
+            string cmdText = string.Format(@"use {2};exec sp_pkeys '{0}','{1}','{3}';",
+                table.Name, table.Owner, table.Database.Name,
+                table.Database.Name.Contains('[') ? table.Database.Name.Replace("[", "").Replace("]", "") : table.Database.Name);
+
             List<string> list = new List<string>();
             DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
 
@@ -148,7 +151,9 @@ namespace Kalman.Data.DbSchemaProvider
         /// <returns></returns>
         public override List<SOColumn> GetTableColumnList(SOTable table)
         {
-            string cmdText = string.Format(@"use {2};exec sp_columns '{0}','{1}','{2}';", table.Name, table.Owner, table.Database.Name);
+            string cmdText = string.Format(@"use {2};exec sp_columns '{0}','{1}','{3}';",
+                table.Name, table.Owner, table.Database.Name,
+                table.Database.Name.Contains('[') ? table.Database.Name.Replace("[", "").Replace("]", "") : table.Database.Name);
 
             List<SOColumn> columnList = new List<SOColumn>();
             List<string> pkList = GetPrimaryKeys(table);

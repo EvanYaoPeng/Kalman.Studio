@@ -54,6 +54,7 @@
             this.btnConvert = new System.Windows.Forms.Button();
             this.btnToHash = new System.Windows.Forms.Button();
             this.btnpastGP = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -287,6 +288,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.btnSearch);
             this.groupBox3.Controls.Add(this.btnRandomString);
             this.groupBox3.Controls.Add(this.btnSecure);
@@ -361,6 +363,16 @@
             this.btnpastGP.UseVisualStyleBackColor = true;
             this.btnpastGP.Click += new System.EventHandler(this.btnpastGP_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 23);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Now";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // StringConvertor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -416,5 +428,6 @@
         private System.Windows.Forms.Button btnReplace;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btncopy;
+        private System.Windows.Forms.Button button1;
     }
 }

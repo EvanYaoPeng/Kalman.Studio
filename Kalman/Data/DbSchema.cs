@@ -73,7 +73,7 @@ namespace Kalman.Data
         /// <returns></returns>
         public virtual DataSet ExecuteQuery(SODatabase db, string cmdText)
         {
-            this.DbProvider.CurrentDatabaseName = db.Name;
+            this.DbProvider.CurrentDatabaseName = db.Name.Contains("[") ? db.Name.Replace("[", "").Replace("]", "") : db.Name;
             DataSet ds = this.DbProvider.ExecuteDataSet(CommandType.Text, cmdText);
             return ds;
         }

@@ -174,5 +174,12 @@ namespace Kalman.Studio
                 this.rtb1.Text = "sh600642,sh600747,sh600527,sz002716";
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.rtb2.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss:ffff");
+        }
+
+       
     }
 }
