@@ -391,6 +391,28 @@ namespace Kalman.Studio
             base.MainForm.NewDockDocument(string.Format("{0}_InsertData", table.Name), CodeType.TSQL, sbDocText.ToString());
         }
 
+
+        private void sqlmenuselect_Click(object sender, EventArgs e)
+        {
+            TreeNode tn = tvDatabase.SelectedNode;
+            SOTable table = tn.Tag as SOTable;
+            List<SOColumn> list = dbSchema.GetTableColumnList(table);
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("SELECT ");
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (i != list.Count - 1)
+                    sb.AppendLine(string.Format("{0},", dbSchema.QuoteIdentifier(list[i].Name)));
+                else
+                    sb.AppendLine(string.Format("{0}", dbSchema.QuoteIdentifier(list[i].Name)));
+            }
+            sb.AppendLine("FROM ");
+            sb.AppendLine(string.Format("{1}", sb.ToString().TrimEnd(','), table.FullName));
+
+            NewQuery(table.Database, sb.ToString());
+        }
+
         #endregion
 
         #region 视图右键菜单事件处理
@@ -419,6 +441,7 @@ namespace Kalman.Studio
 
         #endregion
 
+       
 
         
 

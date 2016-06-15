@@ -10,6 +10,7 @@ using System.Net;
 using WeifenLuo.WinFormsUI.Docking;
 using System.IO;
 using Kalman.Data.SchemaObject;
+using System.Diagnostics;
 
 namespace Kalman.Studio
 {
@@ -629,6 +630,17 @@ namespace Kalman.Studio
             (new About()).ShowDialog();
         }
 
-        
+        private void json格式化ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //1.直接打开
+            //Process.Start(@"F:\Tools\Json2Class\JsonCSharpClassGenerator.exe");
+            //2.
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = @"F:\Tools\Json2Class\JsonCSharpClassGenerator.exe";//需要启动的程序名       
+            //p.StartInfo.Arguments = "-x     sourceFile.Arj     c:/temp";//启动参数       
+            p.Start();//启动       
+            if (p.HasExited)//判断是否运行结束       
+                p.Kill();
+        }        
     }
 }

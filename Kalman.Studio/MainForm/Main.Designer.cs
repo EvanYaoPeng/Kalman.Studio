@@ -113,6 +113,7 @@
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.json格式化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -122,10 +123,10 @@
             this.dockPanel.ActiveAutoHideContent = null;
             this.dockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dockPanel.DockBackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dockPanel.DockBottomPortion = 150;
-            this.dockPanel.DockLeftPortion = 200;
-            this.dockPanel.DockRightPortion = 200;
-            this.dockPanel.DockTopPortion = 150;
+            this.dockPanel.DockBottomPortion = 150D;
+            this.dockPanel.DockLeftPortion = 200D;
+            this.dockPanel.DockRightPortion = 200D;
+            this.dockPanel.DockTopPortion = 150D;
             this.dockPanel.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World, ((byte)(0)));
             this.dockPanel.Location = new System.Drawing.Point(0, 50);
             this.dockPanel.Margin = new System.Windows.Forms.Padding(5);
@@ -677,7 +678,8 @@
             this.menuItemWebSubmitter,
             this.menuItemIisLogParser,
             this.menuItemStringConnector,
-            this.menuItemStringConverter});
+            this.menuItemStringConverter,
+            this.json格式化ToolStripMenuItem});
             this.menuItemTools.Name = "menuItemTools";
             this.menuItemTools.Size = new System.Drawing.Size(59, 21);
             this.menuItemTools.Text = "工具(&T)";
@@ -752,6 +754,13 @@
             this.menuStrip1.Size = new System.Drawing.Size(636, 25);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // json格式化ToolStripMenuItem
+            // 
+            this.json格式化ToolStripMenuItem.Name = "json格式化ToolStripMenuItem";
+            this.json格式化ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.json格式化ToolStripMenuItem.Text = "Json格式化";
+            this.json格式化ToolStripMenuItem.Click += new System.EventHandler(this.json格式化ToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -849,6 +858,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemNewXML;
         private System.Windows.Forms.ToolStripMenuItem menuItemStringConnector;
         private System.Windows.Forms.ToolStripMenuItem menuItemStringConverter;
+        private System.Windows.Forms.ToolStripMenuItem json格式化ToolStripMenuItem;
 
     }
 }

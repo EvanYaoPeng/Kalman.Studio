@@ -39,6 +39,9 @@
             this.menuItemBuildCodeForTable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBuildTestDataForTable = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBuildInsertSqlForTable = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemSQl = new System.Windows.Forms.ToolStripMenuItem();
+            this.sqlmenuselect = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpSql = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsSp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemViewSql = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,9 +124,11 @@
             this.menuItemPreviewTableData,
             this.menuItemBuildCodeForTable,
             this.menuItemBuildTestDataForTable,
-            this.menuItemBuildInsertSqlForTable});
+            this.menuItemBuildInsertSqlForTable,
+            this.toolStripSeparator1,
+            this.menuItemSQl});
             this.cmsTable.Name = "cmsTable";
-            this.cmsTable.Size = new System.Drawing.Size(173, 92);
+            this.cmsTable.Size = new System.Drawing.Size(173, 120);
             // 
             // menuItemPreviewTableData
             // 
@@ -152,6 +157,26 @@
             this.menuItemBuildInsertSqlForTable.Size = new System.Drawing.Size(172, 22);
             this.menuItemBuildInsertSqlForTable.Text = "生成数据插入脚本";
             this.menuItemBuildInsertSqlForTable.Click += new System.EventHandler(this.menuItemBuildInsertSqlForTable_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            // 
+            // menuItemSQl
+            // 
+            this.menuItemSQl.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sqlmenuselect});
+            this.menuItemSQl.Name = "menuItemSQl";
+            this.menuItemSQl.Size = new System.Drawing.Size(172, 22);
+            this.menuItemSQl.Text = "编写表脚本";
+            // 
+            // sqlmenuselect
+            // 
+            this.sqlmenuselect.Name = "sqlmenuselect";
+            this.sqlmenuselect.Size = new System.Drawing.Size(152, 22);
+            this.sqlmenuselect.Text = "Create Select";
+            this.sqlmenuselect.Click += new System.EventHandler(this.sqlmenuselect_Click);
             // 
             // menuItemSpSql
             // 
@@ -279,6 +304,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemBuildDBDoc;
         private System.Windows.Forms.ToolStripMenuItem menuItemBuildTestDataForTable;
         private System.Windows.Forms.ToolStripMenuItem menuItemcloseDB;
+        private System.Windows.Forms.ToolStripMenuItem menuItemSQl;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem sqlmenuselect;
 
 
     }
