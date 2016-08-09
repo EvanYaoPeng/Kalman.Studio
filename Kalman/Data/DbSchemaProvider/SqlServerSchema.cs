@@ -254,45 +254,45 @@ namespace Kalman.Data.DbSchemaProvider
             return dic.Values.ToList<SOView>();
         }
 
-//        /// <summary>
-//        /// 获取视图所拥有的列列表
-//        /// </summary>
-//        /// <param name="view"></param>
-//        /// <returns></returns>
-//        public override List<SOColumn> GetViewColumnList(SOView view)
-//        {
-//            string cmdText = string.Format(@"SELECT *  
-//                FROM INFORMATION_SCHEMA.`COLUMNS` 
-//                WHERE table_schema='{0}' AND table_name='{1}' 
-//                ORDER BY ordinal_position;", view.Database.Name, view.Name);
+        /// <summary>
+        /// 获取视图所拥有的列列表
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
+        public override List<SOColumn> GetViewColumnList(SOView view)
+        {
+            string cmdText = string.Format(@"SELECT *  
+                FROM INFORMATION_SCHEMA.`COLUMNS` 
+                WHERE table_schema='{0}' AND table_name='{1}' 
+                ORDER BY ordinal_position;", view.Database.Name, view.Name);
 
-//            List<SOColumn> columnList = new List<SOColumn>();
-//            DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
+            List<SOColumn> columnList = new List<SOColumn>();
+            DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
 
-//            foreach (DataRow row in dt.Rows)
-//            {
-//                SOColumn column = new SOColumn
-//                {
-//                    Parent = view,
-//                    Name = row["column_name"].ToString(),
-//                    DefaultValue = row["column_default"].ToString(),
-//                    Nullable = row["is_nullable"].ToString().ToUpper() == "YES",
-//                    NativeType = row["data_type"].ToString(),
-//                    Identify = row["extra"].ToString().IndexOf("auto_increment") != -1,
-//                    //ForeignKey
-//                    Length = ConvertUtil.ToInt32(row["character_maximum_length"], -1),
-//                    Precision = ConvertUtil.ToInt32(row["numeric_precision"], -1),
-//                    PrimaryKey = row["column_key"].ToString() == "PRI",
-//                    Scale = ConvertUtil.ToInt32(row["numeric_scale"], -1),
-//                    Comment = row["column_comment"].ToString()
-//                };
+            foreach (DataRow row in dt.Rows)
+            {
+                SOColumn column = new SOColumn
+                {
+                    Parent = view,
+                    Name = row["column_name"].ToString(),
+                    DefaultValue = row["column_default"].ToString(),
+                    Nullable = row["is_nullable"].ToString().ToUpper() == "YES",
+                    NativeType = row["data_type"].ToString(),
+                    Identify = row["extra"].ToString().IndexOf("auto_increment") != -1,
+                    //ForeignKey
+                    Length = ConvertUtil.ToInt32(row["character_maximum_length"], -1),
+                    Precision = ConvertUtil.ToInt32(row["numeric_precision"], -1),
+                    PrimaryKey = row["column_key"].ToString() == "PRI",
+                    Scale = ConvertUtil.ToInt32(row["numeric_scale"], -1),
+                    Comment = row["column_comment"].ToString()
+                };
 
-//                column.DataType = this.GetDbType(column.NativeType);
-//                columnList.Add(column);
-//            }
+                column.DataType = this.GetDbType(column.NativeType);
+                columnList.Add(column);
+            }
 
-//            return columnList;
-//        }
+            return columnList;
+        }
 
 //        /// <summary>
 //        /// 获取视图所拥有的索引列表
@@ -341,28 +341,28 @@ namespace Kalman.Data.DbSchemaProvider
 //            return indexList;
 //        }
 
-//        /// <summary>
-//        /// 获取存储过程列表
-//        /// </summary>
-//        /// <param name="db"></param>
-//        /// <returns></returns>
-//        public override List<SOCommand> GetCommandList(SODatabase db)
-//        {
-//            string cmdText = string.Format(@"SELECT routine_name,routine_comment 
-//                FROM INFORMATION_SCHEMA.`ROUTINES` 
-//                WHERE routine_schema='{0}' AND routine_type='PROCEDURE';", db.Name);
+        /// <summary>
+        /// 获取存储过程列表
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
+        public override List<SOCommand> GetCommandList(SODatabase db)
+        {
+            string cmdText = string.Format(@"use {0};SELECT routine_name 
+                FROM INFORMATION_SCHEMA.ROUTINES
+                WHERE routine_catalog='{0}' AND routine_type='PROCEDURE';", db.Name);
 
-//            List<SOCommand> commandList = new List<SOCommand>();
-//            DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
+            List<SOCommand> commandList = new List<SOCommand>();
+            DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
 
-//            foreach (DataRow row in dt.Rows)
-//            {
-//                SOCommand command = new SOCommand { Parent = db, Name = row["routine_name"].ToString(), Comment = row["routine_comment"].ToString() };
-//                commandList.Add(command);
-//            }
+            foreach (DataRow row in dt.Rows)
+            {
+                SOCommand command = new SOCommand { Parent = db, Name = row["routine_name"].ToString() };
+                commandList.Add(command);
+            }
 
-//            return commandList;
-//        }
+            return commandList;
+        }
 
         ///// <summary>
         ///// 获取存储过程参数列表
@@ -404,9 +404,9 @@ namespace Kalman.Data.DbSchemaProvider
         /// <returns></returns>
         public override string GetCommandSqlText(SOCommand command)
         {
-            string cmdText = string.Format(@"SELECT routine_definition
+            string cmdText = string.Format(@"use {0};SELECT routine_definition
                 FROM INFORMATION_SCHEMA.ROUTINES 
-                WHERE routine_schema='{0}' AND routine_type='PROCEDURE' AND routine_name='{1}';", command.Owner, command.Name);
+                WHERE routine_catalog='{0}' AND routine_type='PROCEDURE' AND routine_name='{1}';", command.Database.Name, command.Name);
 
             string text = this.DbProvider.ExecuteScalar(System.Data.CommandType.Text, cmdText).ToString();
             return text;
