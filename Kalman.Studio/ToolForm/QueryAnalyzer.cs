@@ -88,6 +88,15 @@ namespace Kalman.Studio
             {
                 ExecuteSql();
             }
+            else if (keyData.ToString() == "F2")
+            {
+                SODatabase db = base.MainForm.GetCurrentDatabase();
+                string cmdText = textEditorControl1.Text;
+                if (this.CurrentDatabase != db) this.CurrentDatabase = db;
+                string conStr = string.Format("{0}database={1};", CurrentDatabase.Database.Parent.DbProvider.ConnectionString, CurrentDatabase.Database.FullName);
+               this.textEditorControl2.Text = new Class.ClassGenerating().SqlToClass(conStr, cmdText, "Test");
+                
+            }
 
             return base.ProcessCmdKey(ref msg, keyData);
         }

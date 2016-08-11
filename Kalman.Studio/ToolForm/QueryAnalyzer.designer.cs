@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryAnalyzer));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.textEditorControl1 = new ICSharpCode.TextEditor.TextEditorControl();
             this.cms = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -57,6 +59,8 @@
             this.menuItemCloseAll = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.textEditorControl2 = new ICSharpCode.TextEditor.TextEditorControl();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -66,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.cmsDock.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -110,14 +115,14 @@
             this.toolStripSeparator1,
             this.menuItemSelectAll});
             this.cms.Name = "cms";
-            this.cms.Size = new System.Drawing.Size(154, 170);
+            this.cms.Size = new System.Drawing.Size(163, 170);
             // 
             // menuItemUndo
             // 
             this.menuItemUndo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemUndo.Image")));
             this.menuItemUndo.Name = "menuItemUndo";
             this.menuItemUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.menuItemUndo.Size = new System.Drawing.Size(153, 22);
+            this.menuItemUndo.Size = new System.Drawing.Size(162, 22);
             this.menuItemUndo.Text = "撤销(&Z)";
             this.menuItemUndo.Click += new System.EventHandler(this.menuItemUndo_Click);
             // 
@@ -126,21 +131,21 @@
             this.menuItemRedo.Image = ((System.Drawing.Image)(resources.GetObject("menuItemRedo.Image")));
             this.menuItemRedo.Name = "menuItemRedo";
             this.menuItemRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.menuItemRedo.Size = new System.Drawing.Size(153, 22);
+            this.menuItemRedo.Size = new System.Drawing.Size(162, 22);
             this.menuItemRedo.Text = "重复(&R)";
             this.menuItemRedo.Click += new System.EventHandler(this.menuItemRedo_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(159, 6);
             // 
             // menuItemCut
             // 
             this.menuItemCut.Image = ((System.Drawing.Image)(resources.GetObject("menuItemCut.Image")));
             this.menuItemCut.Name = "menuItemCut";
             this.menuItemCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuItemCut.Size = new System.Drawing.Size(153, 22);
+            this.menuItemCut.Size = new System.Drawing.Size(162, 22);
             this.menuItemCut.Text = "剪切(&X)";
             this.menuItemCut.Click += new System.EventHandler(this.menuItemCut_Click);
             // 
@@ -149,7 +154,7 @@
             this.menuItemCopy.Image = ((System.Drawing.Image)(resources.GetObject("menuItemCopy.Image")));
             this.menuItemCopy.Name = "menuItemCopy";
             this.menuItemCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.menuItemCopy.Size = new System.Drawing.Size(153, 22);
+            this.menuItemCopy.Size = new System.Drawing.Size(162, 22);
             this.menuItemCopy.Text = "复制(&C)";
             this.menuItemCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
             // 
@@ -158,7 +163,7 @@
             this.menuItemPaste.Image = ((System.Drawing.Image)(resources.GetObject("menuItemPaste.Image")));
             this.menuItemPaste.Name = "menuItemPaste";
             this.menuItemPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.menuItemPaste.Size = new System.Drawing.Size(153, 22);
+            this.menuItemPaste.Size = new System.Drawing.Size(162, 22);
             this.menuItemPaste.Text = "粘贴(&V)";
             this.menuItemPaste.Click += new System.EventHandler(this.menuItemPaste_Click);
             // 
@@ -167,20 +172,20 @@
             this.menuItemDelete.Image = ((System.Drawing.Image)(resources.GetObject("menuItemDelete.Image")));
             this.menuItemDelete.Name = "menuItemDelete";
             this.menuItemDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.menuItemDelete.Size = new System.Drawing.Size(153, 22);
+            this.menuItemDelete.Size = new System.Drawing.Size(162, 22);
             this.menuItemDelete.Text = "删除(&D)";
             this.menuItemDelete.Click += new System.EventHandler(this.menuItemDelete_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
             // 
             // menuItemSelectAll
             // 
             this.menuItemSelectAll.Name = "menuItemSelectAll";
             this.menuItemSelectAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.menuItemSelectAll.Size = new System.Drawing.Size(153, 22);
+            this.menuItemSelectAll.Size = new System.Drawing.Size(162, 22);
             this.menuItemSelectAll.Text = "全选(&A)";
             this.menuItemSelectAll.Click += new System.EventHandler(this.menuItemSelectAll_Click);
             // 
@@ -188,6 +193,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -210,7 +216,23 @@
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -258,61 +280,81 @@
             this.toolStripSeparator4,
             this.menuItemOpenFolder});
             this.cmsDock.Name = "cmsDock";
-            this.cmsDock.Size = new System.Drawing.Size(167, 148);
+            this.cmsDock.Size = new System.Drawing.Size(173, 148);
             // 
             // menuItemSave
             // 
             this.menuItemSave.Image = ((System.Drawing.Image)(resources.GetObject("menuItemSave.Image")));
             this.menuItemSave.Name = "menuItemSave";
-            this.menuItemSave.Size = new System.Drawing.Size(166, 22);
+            this.menuItemSave.Size = new System.Drawing.Size(172, 22);
             this.menuItemSave.Text = "保存";
             this.menuItemSave.Click += new System.EventHandler(this.menuItemSave_Click);
             // 
             // menuItemSaveAs
             // 
             this.menuItemSaveAs.Name = "menuItemSaveAs";
-            this.menuItemSaveAs.Size = new System.Drawing.Size(166, 22);
+            this.menuItemSaveAs.Size = new System.Drawing.Size(172, 22);
             this.menuItemSaveAs.Text = "另存为...";
             this.menuItemSaveAs.Click += new System.EventHandler(this.menuItemSaveAs_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(169, 6);
             // 
             // menuItemClose
             // 
             this.menuItemClose.Image = ((System.Drawing.Image)(resources.GetObject("menuItemClose.Image")));
             this.menuItemClose.Name = "menuItemClose";
-            this.menuItemClose.Size = new System.Drawing.Size(166, 22);
+            this.menuItemClose.Size = new System.Drawing.Size(172, 22);
             this.menuItemClose.Text = "关闭";
             this.menuItemClose.Click += new System.EventHandler(this.menuItemClose_Click);
             // 
             // menuItemCloseOther
             // 
             this.menuItemCloseOther.Name = "menuItemCloseOther";
-            this.menuItemCloseOther.Size = new System.Drawing.Size(166, 22);
+            this.menuItemCloseOther.Size = new System.Drawing.Size(172, 22);
             this.menuItemCloseOther.Text = "除此之外全部关闭";
             this.menuItemCloseOther.Click += new System.EventHandler(this.menuItemCloseOther_Click);
             // 
             // menuItemCloseAll
             // 
             this.menuItemCloseAll.Name = "menuItemCloseAll";
-            this.menuItemCloseAll.Size = new System.Drawing.Size(166, 22);
+            this.menuItemCloseAll.Size = new System.Drawing.Size(172, 22);
             this.menuItemCloseAll.Text = "全部关闭";
             this.menuItemCloseAll.Click += new System.EventHandler(this.menuItemCloseAll_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
             // 
             // menuItemOpenFolder
             // 
             this.menuItemOpenFolder.Name = "menuItemOpenFolder";
-            this.menuItemOpenFolder.Size = new System.Drawing.Size(166, 22);
+            this.menuItemOpenFolder.Size = new System.Drawing.Size(172, 22);
             this.menuItemOpenFolder.Text = "打开所在文件夹";
             this.menuItemOpenFolder.Click += new System.EventHandler(this.menuItemOpenFolder_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textEditorControl2);
+            this.tabPage3.Location = new System.Drawing.Point(4, 23);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(666, 229);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "实体类";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // textEditorControl2
+            // 
+            this.textEditorControl2.ContextMenuStrip = this.cms;
+            this.textEditorControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textEditorControl2.IsReadOnly = false;
+            this.textEditorControl2.Location = new System.Drawing.Point(0, 0);
+            this.textEditorControl2.Name = "textEditorControl2";
+            this.textEditorControl2.Size = new System.Drawing.Size(666, 229);
+            this.textEditorControl2.TabIndex = 2;
             // 
             // QueryAnalyzer
             // 
@@ -320,14 +362,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 519);
             this.Controls.Add(this.splitContainer1);
-            this.DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.Document;
-            this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QueryAnalyzer";
             this.TabPageContextMenuStrip = this.cmsDock;
             this.Text = "查询分析器";
-            this.Load += new System.EventHandler(this.QueryAnalyzer_Load);
             this.Activated += new System.EventHandler(this.QueryAnalyzer_Activated);
+            this.Load += new System.EventHandler(this.QueryAnalyzer_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
@@ -337,6 +377,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.cmsDock.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -370,5 +411,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuItemSelectAll;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private ICSharpCode.TextEditor.TextEditorControl textEditorControl2;
     }
 }

@@ -115,6 +115,7 @@
     <Compile Include="Caching\CacheItemExpiration\SlidingTime.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Class\ClassGenerating.cs" />
     <Compile Include="Collections\KeyedList.cs" />
     <Compile Include="Collections\SynchronizedDictionary.cs" />
     <Compile Include="Collections\SynchronizedLinkedList.cs" />
