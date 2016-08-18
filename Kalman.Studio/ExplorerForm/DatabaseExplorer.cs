@@ -259,6 +259,9 @@ namespace Kalman.Studio
         {
             //LoadDbSchema(null);
         }
+
+
+
         #endregion
 
         #region 表右键菜单事件处理
@@ -413,6 +416,14 @@ namespace Kalman.Studio
             NewQuery(table.Database, sb.ToString());
         }
 
+        private void tablesqlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TreeNode tn = tvDatabase.SelectedNode;
+            SOTable table = tn.Tag as SOTable;
+
+            base.MainForm.NewDockDocument(table.Name, CodeType.TSQL, table.SqlText);
+        }
+
         #endregion
 
         #region 视图右键菜单事件处理
@@ -440,6 +451,8 @@ namespace Kalman.Studio
         }
 
         #endregion
+
+        
 
        
 
