@@ -53,6 +53,7 @@
             this.menuItemBatchBuildCode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBuildDBDoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemcloseDB = new System.Windows.Forms.ToolStripMenuItem();
+            this.tablesqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.cmsTable.SuspendLayout();
             this.cmsSp.SuspendLayout();
@@ -126,9 +127,10 @@
             this.menuItemBuildTestDataForTable,
             this.menuItemBuildInsertSqlForTable,
             this.toolStripSeparator1,
-            this.menuItemSQl});
+            this.menuItemSQl,
+            this.tablesqlToolStripMenuItem});
             this.cmsTable.Name = "cmsTable";
-            this.cmsTable.Size = new System.Drawing.Size(173, 120);
+            this.cmsTable.Size = new System.Drawing.Size(173, 164);
             // 
             // menuItemPreviewTableData
             // 
@@ -260,6 +262,13 @@
             this.menuItemcloseDB.Text = "关闭数据库";
             this.menuItemcloseDB.Click += new System.EventHandler(this.menuItemcloseDB_Click);
             // 
+            // tablesqlToolStripMenuItem
+            // 
+            this.tablesqlToolStripMenuItem.Name = "tablesqlToolStripMenuItem";
+            this.tablesqlToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.tablesqlToolStripMenuItem.Text = "生成表脚本";
+            this.tablesqlToolStripMenuItem.Click += new System.EventHandler(this.tablesqlToolStripMenuItem_Click);
+            // 
             // DatabaseExplorer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -307,6 +316,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemSQl;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem sqlmenuselect;
+        private System.Windows.Forms.ToolStripMenuItem tablesqlToolStripMenuItem;
 
 
     }

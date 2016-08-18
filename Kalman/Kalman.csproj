@@ -154,6 +154,7 @@
     <Compile Include="Data\SchemaObject\SOView.cs" />
     <Compile Include="Extensions\CollectionExt.cs" />
     <Compile Include="Extensions\DataExt.cs" />
+    <Compile Include="Extensions\StringExtension\StringBuilderExt.cs" />
     <Compile Include="Extensions\StringExtension\StringExt.CodeBuilder.cs" />
     <Compile Include="IDBuilder.cs" />
     <Compile Include="IISLogParser\LogParseFilter.cs" />

@@ -6,6 +6,7 @@ using Kalman.Utilities;
 using Kalman.Data.SchemaObject;
 using System.Data;
 using System.Collections;
+using Kalman.Extensions;
 
 namespace Kalman.Data.DbSchemaProvider
 {
@@ -364,26 +365,81 @@ namespace Kalman.Data.DbSchemaProvider
             return commandList;
         }
 
-        ///// <summary>
-        ///// 获取存储过程参数列表
-        ///// </summary>
-        ///// <param name="command"></param>
-        ///// <returns></returns>
-        //public override List<SOCommandParameter> GetCommandParameterList(SOCommand command)
-        //{
-        //    //在information_schema数据库中没有找到存储存储过程参数的表，可以考虑从存储过程DDL脚本解析出来
-        //    throw new NotImplementedException();
-        //}
+        /// <summary>
+        /// 获取存储过程参数列表
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public override List<SOCommandParameter> GetCommandParameterList(SOCommand command)
+        {
+            //在information_schema数据库中没有找到存储存储过程参数的表，可以考虑从存储过程DDL脚本解析出来
+            string cmdText = string.Format(@"use {0};select  a.name,b.name as typename,a.length,a.status from syscolumns a 
+                LEFT JOIN systypes b on a.xtype=b.xtype
+                where ID in (SELECT id FROM sysobjects as a  WHERE xtype='P' and id = object_id(N'{1}')) ",command.Parent.Database.Name,command.Name);
 
-        ///// <summary>
-        ///// 获取表的Sql脚本
-        ///// </summary>
-        ///// <param name="table"></param>
-        ///// <returns></returns>
-        //public override string GetTableSqlText(SOTable table)
-        //{
-        //    throw new NotImplementedException();
-        //}
+            List<SOCommandParameter> commandParList = new List<SOCommandParameter>();
+            DataTable dt = this.DbProvider.ExecuteDataSet(System.Data.CommandType.Text, cmdText).Tables[0];
+
+            foreach(DataRow row in dt.Rows)
+            {
+                SOCommandParameter comParameter = new SOCommandParameter { 
+                Parent=command,
+                Name=row["name"].ToString(),
+                Length=int.Parse(row["length"].ToString()),
+                NativeType = row["typename"].ToString(),
+                };
+                int status=int.Parse(row["status"].ToString());
+                if(status==8)
+                {
+                    comParameter.Direction = ParameterDirection.Input;
+                }else if(status==72)
+                {
+                    comParameter.Direction = ParameterDirection.Output;
+                }
+                commandParList.Add(comParameter);
+            }
+            return commandParList;
+        }
+
+        /// <summary>
+        /// 获取表的Sql脚本
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
+        public override string GetTableSqlText(SOTable table)
+        {
+            List<SOColumn> columnnList = table.ColumnList;
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("create table [dbo].[" + table.Name + "] (");
+            foreach(SOColumn item in columnnList)
+            {
+                sb.AppendFormat("\t[{0}] {1}", item.Name, item.NativeType);
+                if (item.PrimaryKey)
+                {
+                    sb.Append(" PRIMARY KEY ");
+                }
+
+                if (item.Identify)
+                {
+                    sb.Append(" identity ");
+                }
+                else if (!item.Identify)
+                {
+                    sb.Append(" not null ");
+
+                    if (item.DefaultValue != null && item.DefaultValue != "")
+                    {
+                        sb.Append(" default " + item.DefaultValue);
+                    }
+                }
+
+                sb.Append(",\r\n");
+            }
+
+            sb = sb.TrimEnd(",\r\n");
+            sb.AppendLine("\r\n)");
+            return sb.ToString() ;
+        }
 
         /// <summary>
         /// 获取视图的Sql脚本
