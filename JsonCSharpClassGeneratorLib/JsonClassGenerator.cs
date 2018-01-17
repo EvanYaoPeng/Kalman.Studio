@@ -7,7 +7,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
-using System.Data.Entity.Design.PluralizationServices;
+using System.Data.Entity.Design;
 using System.Globalization;
 using Evan.JsonClassGenerator.CodeWriters;
 
