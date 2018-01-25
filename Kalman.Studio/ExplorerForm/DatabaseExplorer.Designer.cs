@@ -42,6 +42,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemSQl = new System.Windows.Forms.ToolStripMenuItem();
             this.sqlmenuselect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tablesqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemSpSql = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsSp = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemViewSql = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,7 +54,6 @@
             this.menuItemBatchBuildCode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemBuildDBDoc = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemcloseDB = new System.Windows.Forms.ToolStripMenuItem();
-            this.tablesqlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.cmsTable.SuspendLayout();
             this.cmsSp.SuspendLayout();
@@ -79,13 +79,14 @@
             // cbConnectionStrings
             // 
             this.cbConnectionStrings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbConnectionStrings.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConnectionStrings.FormattingEnabled = true;
             this.cbConnectionStrings.Location = new System.Drawing.Point(3, 3);
             this.cbConnectionStrings.Name = "cbConnectionStrings";
             this.cbConnectionStrings.Size = new System.Drawing.Size(284, 20);
             this.cbConnectionStrings.TabIndex = 0;
             this.cbConnectionStrings.SelectedIndexChanged += new System.EventHandler(this.cbConnectionStrings_SelectedIndexChanged);
+            this.cbConnectionStrings.TextUpdate += new System.EventHandler(this.cbConnectionStrings_TextUpdate);
+            this.cbConnectionStrings.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbConnectionStrings_KeyUp);
             // 
             // tvDatabase
             // 
@@ -130,7 +131,7 @@
             this.menuItemSQl,
             this.tablesqlToolStripMenuItem});
             this.cmsTable.Name = "cmsTable";
-            this.cmsTable.Size = new System.Drawing.Size(173, 164);
+            this.cmsTable.Size = new System.Drawing.Size(173, 142);
             // 
             // menuItemPreviewTableData
             // 
@@ -179,6 +180,13 @@
             this.sqlmenuselect.Size = new System.Drawing.Size(152, 22);
             this.sqlmenuselect.Text = "Create Select";
             this.sqlmenuselect.Click += new System.EventHandler(this.sqlmenuselect_Click);
+            // 
+            // tablesqlToolStripMenuItem
+            // 
+            this.tablesqlToolStripMenuItem.Name = "tablesqlToolStripMenuItem";
+            this.tablesqlToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.tablesqlToolStripMenuItem.Text = "生成表脚本";
+            this.tablesqlToolStripMenuItem.Click += new System.EventHandler(this.tablesqlToolStripMenuItem_Click);
             // 
             // menuItemSpSql
             // 
@@ -261,13 +269,6 @@
             this.menuItemcloseDB.Size = new System.Drawing.Size(160, 22);
             this.menuItemcloseDB.Text = "关闭数据库";
             this.menuItemcloseDB.Click += new System.EventHandler(this.menuItemcloseDB_Click);
-            // 
-            // tablesqlToolStripMenuItem
-            // 
-            this.tablesqlToolStripMenuItem.Name = "tablesqlToolStripMenuItem";
-            this.tablesqlToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.tablesqlToolStripMenuItem.Text = "生成表脚本";
-            this.tablesqlToolStripMenuItem.Click += new System.EventHandler(this.tablesqlToolStripMenuItem_Click);
             // 
             // DatabaseExplorer
             // 

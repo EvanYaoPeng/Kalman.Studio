@@ -452,11 +452,40 @@ namespace Kalman.Studio
 
         #endregion
 
-        
+        private void cbConnectionStrings_TextUpdate(object sender, EventArgs e)
+        {
+            //清空combobox
+            //this.cbConnectionStrings.Items.Clear();
 
-       
+            //foreach (ConnectionStringSettings css in ConfigurationManager.ConnectionStrings)
+            //{
+            //    if (css.Name.Contains(cbConnectionStrings.Text))
+            //        cbConnectionStrings.Items.Add(css.Name);
+            //}
+            ////combobox添加已经查到的关键词
+            ////   this.cbConnectionStrings.Items.AddRange(listNew.ToArray());
+            ////设置光标位置，否则光标位置始终保持在第一列，造成输入关键词的倒序排列
+            //// this.cbConnectionStrings.SelectionStart = this.cbConnectionStrings.Text.Length;
+            ////保持鼠标指针原来状态，有时候鼠标指针会被下拉框覆盖，所以要进行一次设置。
+            ////Cursor = Cursors.Default;
+            //cbConnectionStrings.Text = cbConnectionStrings.Text;
+            ////自动弹出下拉框
+            //this.cbConnectionStrings.DroppedDown = true;
+        }
 
-        
+        private void cbConnectionStrings_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue.Equals(13))
+            {
+                this.cbConnectionStrings.Items.Clear();
 
+                foreach (ConnectionStringSettings css in ConfigurationManager.ConnectionStrings)
+                {
+                    if (css.Name.Contains(cbConnectionStrings.Text))
+                        cbConnectionStrings.Items.Add(css.Name);
+                }
+                this.cbConnectionStrings.DroppedDown = true;
+            }
+        }
     }
 }
